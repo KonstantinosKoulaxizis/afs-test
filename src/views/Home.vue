@@ -2,7 +2,7 @@
   <div class="home">
     <h1>This is a table with some important data</h1>
     <b-table :data="tableData" :columns="columns"></b-table>
-    <table-totals :tableData="tableData"/>
+    <table-totals :tableData="tableData" />
   </div>
 </template>
 
@@ -43,23 +43,23 @@ export default class Home extends Vue {
   // mounted works fine if your ide complains about it
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   mounted() {
-    this.getData()
-      .then((data: TableData[]) => {
-        this.loading = true;
-        return data.map((dataItem: TableData) => {
-          return {
-            ...dataItem,
-            randomNumber: Math.random(),
-          };
-        });
-      })
-      .then((data: TableData[]) => {
-        this.tableData = data;
-        this.loading = false;
-      })
-      .catch((error) => {
-        console.log(error, "This is not good");
+    this.handleGetData();
+  }
+
+  async handleGetData(): Promise<void> {
+    try {
+      this.loading = true;
+      const data = await this.getData();
+      this.tableData = data.map((dataItem: TableData) => {
+        return {
+          ...dataItem,
+          randomNumber: Math.random(),
+        };
       });
+      this.loading = false;
+    } catch (error) {
+      console.log(error, "This is not good");
+    }
   }
 
   async getData(): Promise<TableData[]> {
