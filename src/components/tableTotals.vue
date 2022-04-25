@@ -35,7 +35,7 @@ export default class TableTotals extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #table-totals {
   display: flex;
   border: 2px solid #727070;
