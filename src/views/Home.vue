@@ -2,14 +2,18 @@
   <div class="home">
     <h1>This is a table with some important data</h1>
     <b-table :data="tableData" :columns="columns"></b-table>
+    <table-totals :tableData="tableData"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { TableData } from "@/types/types";
+import TableTotals from "@/components/tableTotals.vue";
 
-@Component
+@Component({
+  components: { TableTotals },
+})
 export default class Home extends Vue {
   tableData: TableData[] = [];
   columns = [
