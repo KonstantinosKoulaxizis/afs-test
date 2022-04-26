@@ -1,4 +1,5 @@
 import { TableData } from '@/types/types'
+import { SECURITY_TABLE_NUM_COLUMNS } from '@/utils/SecurityTableColumns'
 
 export interface TableTotalRow {
   label: string
@@ -12,29 +13,11 @@ export enum TableDataNumberFields {
   issuedCapital = 'issuedCapital'
 }
 
-export const HOME_TABLE_NUM_COLUMNS = [
-  {
-    label: 'Authorized amount',
-    field: TableDataNumberFields.authorizedAmount
-  },
-  {
-    label: 'Issued amount',
-    field: TableDataNumberFields.issuedAmount
-  },
-  {
-    label: 'Authorized capital',
-    field: TableDataNumberFields.authorizedCapital
-  },
-  {
-    label: 'Issued capital',
-    field: TableDataNumberFields.issuedCapital
-  }
-]
 export class TableTotalsData {
   public tableTotalsdata: TableTotalRow[]
 
   constructor(tableData: TableData[]) {
-    this.tableTotalsdata = HOME_TABLE_NUM_COLUMNS.map(column => {
+    this.tableTotalsdata = SECURITY_TABLE_NUM_COLUMNS.map(column => {
       return {
         label: column.label,
         amount: TableTotalsData.calculateColumnTotal(tableData, column.field)

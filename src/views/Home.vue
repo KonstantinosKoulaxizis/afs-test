@@ -12,19 +12,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import TableTotals from "@/components/tableTotals.vue";
-import { HOME_TABLE_NUM_COLUMNS } from "@/classes/TableTotalsData";
+import { SECURITY_TABLE_COLUMNS } from "@/utils/SecurityTableColumns";
 
 @Component({
   components: { TableTotals },
 })
 export default class Home extends Vue {
-  columns = [
-    {
-      label: "Security class",
-      field: "name",
-    },
-    ...HOME_TABLE_NUM_COLUMNS,
-  ];
+  columns = SECURITY_TABLE_COLUMNS;
 
   // Add missing return type of function in order to remove editor's complains
   mounted(): void {
