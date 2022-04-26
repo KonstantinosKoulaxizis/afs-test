@@ -1,5 +1,10 @@
 import { TableData } from '@/types/types'
 
+export interface TableTotalRow {
+  label: string
+  amount: number
+}
+
 export enum TableDataNumberFields {
   authorizedAmount = 'authorizedAmount',
   issuedAmount = 'issuedAmount',
@@ -7,29 +12,34 @@ export enum TableDataNumberFields {
   issuedCapital = 'issuedCapital'
 }
 
+export const HOME_TABLE_NUM_COLUMNS = [
+  {
+    label: 'Authorized amount',
+    field: TableDataNumberFields.authorizedAmount
+  },
+  {
+    label: 'Issued amount',
+    field: TableDataNumberFields.issuedAmount
+  },
+  {
+    label: 'Authorized capital',
+    field: TableDataNumberFields.authorizedCapital
+  },
+  {
+    label: 'Issued capital',
+    field: TableDataNumberFields.issuedCapital
+  }
+]
 export class TableTotalsData {
-  public authorizedAmount: number
-  public issuedAmount: number
-  public authorizedCapital: number
-  public issuedCapital: number
+  public tableTotalsdata: TableTotalRow[]
 
   constructor(tableData: TableData[]) {
-    this.authorizedAmount = TableTotalsData.calculateColumnTotal(
-      tableData,
-      TableDataNumberFields.authorizedAmount
-    )
-    this.issuedAmount = TableTotalsData.calculateColumnTotal(
-      tableData,
-      TableDataNumberFields.issuedAmount
-    )
-    this.authorizedCapital = TableTotalsData.calculateColumnTotal(
-      tableData,
-      TableDataNumberFields.authorizedCapital
-    )
-    this.issuedCapital = TableTotalsData.calculateColumnTotal(
-      tableData,
-      TableDataNumberFields.issuedCapital
-    )
+    this.tableTotalsdata = HOME_TABLE_NUM_COLUMNS.map(column => {
+      return {
+        label: column.label,
+        amount: TableTotalsData.calculateColumnTotal(tableData, column.field)
+      }
+    })
   }
 
   static calculateColumnTotal(data: TableData[], dataKey: string): number {

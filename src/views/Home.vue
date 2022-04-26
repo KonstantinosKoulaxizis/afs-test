@@ -10,6 +10,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { TableData } from "@/types/types";
 import TableTotals from "@/components/tableTotals.vue";
+import { HOME_TABLE_NUM_COLUMNS } from "@/classes/TableTotalsData";
 
 @Component({
   components: { TableTotals },
@@ -21,22 +22,7 @@ export default class Home extends Vue {
       label: "Security class",
       field: "name",
     },
-    {
-      label: "Authorized amount",
-      field: "authorizedAmount",
-    },
-    {
-      label: "Issued amount",
-      field: "issuedAmount",
-    },
-    {
-      label: "Authorized Capital",
-      field: "authorizedCapital",
-    },
-    {
-      label: "Issued capital",
-      field: "issuedCapital",
-    },
+    ...HOME_TABLE_NUM_COLUMNS,
   ];
   loading = false;
 
@@ -104,3 +90,17 @@ export default class Home extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+#add-security-container {
+  display: flex;
+  justify-content: right;
+  padding: 10px 25px;
+  button {
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+}
+</style>
