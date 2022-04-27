@@ -1,3 +1,5 @@
+import { SecurityTableNumberFields } from "@/utils/SecurityTableColumns";
+
 export type Transaction = {
   __typename?: "Transaction";
   amount?: number | null;
@@ -30,3 +32,9 @@ export type TableData = {
   issuedCapital: number;
   randomNumber?: number;
 };
+
+export type FormFieldObj = {
+  label: string;
+  field: SecurityTableNumberFields | string
+  text?: boolean
+}

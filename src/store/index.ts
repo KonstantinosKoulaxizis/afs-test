@@ -17,6 +17,9 @@ export default new Vuex.Store({
     setTableData(state, data: TableData[]) {
       state.homeTableData = data
     },
+    addTableData(state, data: TableData) {
+      state.homeTableData = [...state.homeTableData, data]
+    },
     setLodaing(state, isLoading: boolean) {
       state.loading = isLoading
     }
