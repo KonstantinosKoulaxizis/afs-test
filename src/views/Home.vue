@@ -28,7 +28,7 @@ export default class Home extends Vue {
   async handleGetInitialData(): Promise<void> {
     // Implement a check and fetch data only if the array is empty
     // in order to prevent unnecessary requests
-    if (!this.$store.state.homeTableData) {
+    if (!this.$store.state.homeTableData?.length) {
       await this.$store.dispatch("handleGetData");
     }
   }

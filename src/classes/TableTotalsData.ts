@@ -5,14 +5,6 @@ export interface TableTotalRow {
   label: string
   amount: number
 }
-
-export enum TableDataNumberFields {
-  authorizedAmount = 'authorizedAmount',
-  issuedAmount = 'issuedAmount',
-  authorizedCapital = 'authorizedCapital',
-  issuedCapital = 'issuedCapital'
-}
-
 export class TableTotalsData {
   public tableTotalsdata: TableTotalRow[]
 

@@ -1,21 +1,26 @@
-import { TableDataNumberFields } from '@/classes/TableTotalsData'
+export enum SecurityTableNumberFields {
+  authorizedAmount = 'authorizedAmount',
+  issuedAmount = 'issuedAmount',
+  authorizedCapital = 'authorizedCapital',
+  issuedCapital = 'issuedCapital'
+}
 
 export const SECURITY_TABLE_NUM_COLUMNS = [
   {
     label: 'Authorized amount',
-    field: TableDataNumberFields.authorizedAmount
+    field: SecurityTableNumberFields.authorizedAmount
   },
   {
     label: 'Issued amount',
-    field: TableDataNumberFields.issuedAmount
+    field: SecurityTableNumberFields.issuedAmount
   },
   {
     label: 'Authorized capital',
-    field: TableDataNumberFields.authorizedCapital
+    field: SecurityTableNumberFields.authorizedCapital
   },
   {
     label: 'Issued capital',
-    field: TableDataNumberFields.issuedCapital
+    field: SecurityTableNumberFields.issuedCapital
   }
 ]
 
