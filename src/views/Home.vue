@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import TableTotals from "@/components/tableTotals.vue";
+import TableTotals from "@/components/homeComponents/tableTotals.vue";
 import NewSecurityModal from "@/components/homeComponents/newSecurityModal.vue";
 import { SECURITY_TABLE_COLUMNS } from "@/utils/SecurityTableColumns";
 
