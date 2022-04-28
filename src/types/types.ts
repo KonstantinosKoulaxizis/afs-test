@@ -35,6 +35,15 @@ export type TableData = {
 
 export type FormFieldObj = {
   label: string;
-  field: SecurityTableNumberFields | string
-  text?: boolean
+  field: SecurityTableNumberFields | string;
+  text?: boolean;
+}
+
+export type NewSecurityClassFields = {
+  name: string;
+  nominalValue: number;
+  authorizedAmount: number;
+  issuedAmount: number;
+  authorizedCapital: number;
+  issuedCapital: number;
 }

@@ -32,31 +32,37 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 import ModalTemplate from "@/templates/modalTemplate.vue";
-import { FormFieldObj } from "@/types/types";
+import { FormFieldObj, NewSecurityClassFields } from "@/types/types";
 
 @Component({
   name: "NewSecurityModal",
   components: { ModalTemplate },
 })
 export default class NewSecurityModal extends Vue {
-  public formValue: any = {};
+  public formValue = {} as NewSecurityClassFields;
   public notValidated = false;
   @Prop({ required: true }) isModalVisible!: boolean;
   @Prop({ required: true }) formFields!: FormFieldObj[];
 
   handleNewSecurity(): void {
     const notValidated = this.formFields.some(
-      (field) => !this.formValue?.[field.field]?.length
+      (field) => !this.formValue?.[field.field as keyof NewSecurityClassFields]
     );
     // Make sure all fields are populated
     if (notValidated) {
       this.notValidated = true;
     } else {
       // Turn all not text props in to number
-      const formtated = { ...this.formValue };
+      const formtated: NewSecurityClassFields = {
+        ...(this.formValue as NewSecurityClassFields),
+      };
       this.formFields.forEach((field) => {
         if (!field.text) {
-          formtated[field.field] = Number(formtated[field.field]);
+          (formtated[
+            field.field as keyof NewSecurityClassFields
+          ] as number) = Number(
+            formtated[field.field as keyof NewSecurityClassFields]
+          );
         }
       });
 
@@ -66,7 +72,7 @@ export default class NewSecurityModal extends Vue {
       };
 
       this.$store.commit("addTableData", newSecurityClass);
-      this.formValue = {};
+      this.formValue = {} as NewSecurityClassFields;
       this.close();
     }
   }
