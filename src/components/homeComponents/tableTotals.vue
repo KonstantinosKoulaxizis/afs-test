@@ -58,7 +58,8 @@ export default class TableTotals extends Vue {
       justify-content: space-between;
     }
     .total-label {
-      font-size: 18px;
+      color: #000;
+      position: unset;
     }
     #table-total-label {
       font-size: 22px;
