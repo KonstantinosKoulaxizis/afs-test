@@ -13,7 +13,7 @@ On the "Home" page is a table, add a row to this table that displays the totals 
 
 <-------------------------------------------------------------------------------------------------->
 
-The implemented solution for this task is a separate component getting all the data it need from it's parent (Home.vue).
+The implemented solution for this task is a separate component getting all the data it needs from its parent (Home.vue).
 In order for the cells of this component to match with the table's in case of a big screen I have include the text label but gave a transparent color
 
 ### Async/Await
@@ -55,7 +55,7 @@ Something is going wrong with this button, fix it and explain why it broke in th
 
 <-------------------------------------------------------------------------------------------------->
 
-The bug occurred because of Vue's default reactivity behavior. In to have Vue automatically react to value changes, the objects must be initially declared in data. Or, if not, they must be added using Vue.set(). 
+The bug occurred because of Vue's default reactivity behavior. To have Vue automatically react to value changes, the objects must be initially declared in data. Or, if not, they must be added using Vue.set(). 
 So because in our case the property was added after the initial declaration one of the possible solutions is to add it using Vue.set()
 
 
