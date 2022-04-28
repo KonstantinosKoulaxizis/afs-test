@@ -41,7 +41,11 @@ export default class TableTotals extends Vue {
     padding: 8px 12px;
   }
   .total-label {
-    font-size: 0;
+    text-align: center;
+    font-size: 18px;
+    color: transparent;
+    position: absolute;
+    display: flex;
   }
 }
 
