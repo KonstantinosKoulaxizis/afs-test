@@ -48,8 +48,10 @@ export default class Transfers extends Vue {
   }
 
   updateTransfers(): void {
-    this.transfers.forEach((transfer) => {
-      transfer.forgottenProperty = `Important data: ${(Math.random() * 100000000).toString().slice(1, 8)}`;
+    // To have Vue automatically react to value changes, the objects must be initially declared in data. Or, if not, they must be added using Vue.set()
+    this.transfers.forEach((transfer, index) => {
+      const forgottenPropertyValue = `Important data: ${(Math.random() * 100000000).toString().slice(1, 8)}`
+      Vue.set(this.transfers[index], 'forgottenProperty', forgottenPropertyValue)
     });
 
     this.transfers[0] = {
