@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Transaction } from "@/types/types";
-import TransferRow from "@/components/transferRow.vue";
+import TransferRow from "@/components/transferComponents/transferRow.vue";
 import transfers from "@/assets/data";
 @Component({
   name: "Transfers",
